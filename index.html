@@ -42,12 +42,45 @@
   .toc-link.active { background: var(--accent-light); color: var(--accent); font-weight: 600; }
   .toc-icon { font-size: 14px; flex-shrink: 0; }
   .toc-text { white-space: normal; word-break: break-all; }
-  @media (max-width: 900px) {
-    .page-layout { flex-direction: column; }
-    .page-toc { width: 100%; position: static; }
+  /* ===== Mobile Responsive ===== */
+  @media (max-width: 768px) {
+    .page-layout { flex-direction: column; padding: 16px 0 60px; gap: 0; }
+    .page-toc { width: 100%; position: static; order: -1; padding: 0 16px; margin-bottom: 16px; }
+    .toc-card { padding: 12px; }
     .toc-list { display: flex; flex-wrap: wrap; gap: 4px; }
     .toc-item { margin-bottom: 0; }
     .toc-text { white-space: nowrap; }
+    .page-main { padding: 0 16px; }
+    .header { padding: 28px 20px; border-radius: var(--radius-sm); margin-bottom: 20px; }
+    h1 { font-size: 20px; }
+    .header-subtitle { font-size: 13px; }
+    .meta-row { gap: 10px; font-size: 12px; }
+    .section { padding: 20px 16px; border-radius: var(--radius-sm); margin-bottom: 16px; }
+    .section-header { gap: 8px; flex-wrap: wrap; }
+    .section-title { font-size: 16px; }
+    .section-icon { width: 30px; height: 30px; font-size: 14px; }
+    .finding-grid { grid-template-columns: 1fr; gap: 10px; }
+    .capability-table { font-size: 13px; display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .capability-table th, .capability-table td { padding: 8px 10px; }
+    .cap-name { white-space: normal; min-width: auto; }
+    .scenario-name { font-size: 15px; }
+    .scenario-desc { font-size: 13px; }
+    .meeting-block { padding: 14px 16px; }
+    .meeting-block-title { font-size: 14px; }
+    .meeting-block-content { font-size: 13px; }
+    .status-banner { flex-direction: column; align-items: flex-start; gap: 8px; padding: 14px 16px; }
+    .status-text { font-size: 13px; }
+    .status-sub { font-size: 12px; }
+    .quote-block { padding: 14px 16px; }
+    .quote-text { font-size: 14px; }
+    .note-box { padding: 12px 14px; }
+    .toggle-btn { font-size: 11px; padding: 3px 8px; }
+    .tag { font-size: 11px; padding: 2px 8px; }
+    .tl-item { gap: 10px; }
+    .tl-dot { width: 26px; height: 26px; font-size: 11px; }
+    .tl-time { font-size: 11px; }
+    .tl-event { font-size: 13px; }
+    .tl-detail { font-size: 12px; }
   }
   .header { background: linear-gradient(135deg, #0a1628 0%, #1a365d 50%, #0d2137 100%); color: white; padding: 48px 40px; border-radius: var(--radius); margin-bottom: 32px; position: relative; overflow: hidden; }
   .header::before { content: ''; position: absolute; top: -50%; right: -20%; width: 400px; height: 400px; background: radial-gradient(circle, rgba(0,104,183,0.15) 0%, transparent 70%); border-radius: 50%; }
