@@ -29,6 +29,7 @@
     line-height: 1.7;
     font-size: 15px;
   }
+  .container { max-width: 960px; margin: 0 auto; padding: 40px 24px 80px; }
   .page-layout { display: flex; gap: 32px; max-width: 1160px; margin: 0 auto; padding: 40px 24px 80px; align-items: flex-start; }
   .page-main { flex: 1; min-width: 0; }
   .page-toc { width: 200px; flex-shrink: 0; position: sticky; top: 24px; max-height: calc(100vh - 48px); overflow-y: auto; }
@@ -61,26 +62,37 @@
     .section-header { gap: 6px; flex-wrap: wrap; margin-bottom: 14px; padding-bottom: 10px; }
     .section-title { font-size: 15px; }
     .section-icon { width: 26px; height: 26px; font-size: 13px; border-radius: 6px; }
-    .fact-grid { grid-template-columns: 1fr; gap: 8px; }
-    .fact-card { padding: 10px 12px; }
-    .fact-label { font-size: 10px; margin-bottom: 3px; }
-    .fact-value { font-size: 13px; }
-    .scenario-section { margin-bottom: 14px; padding-bottom: 14px; }
+    .finding-grid { grid-template-columns: 1fr; gap: 8px; }
+    .finding-card { padding: 10px 12px; }
+    .finding-label { font-size: 10px; margin-bottom: 4px; }
+    .finding-value { font-size: 13px; }
+    .finding-detail { font-size: 12px; }
+    .capability-table { font-size: 11px; display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .capability-table th, .capability-table td { padding: 6px 8px; line-height: 1.5; }
+    .capability-table th { font-size: 11px; }
+    .cap-name { white-space: normal; min-width: 72px; font-size: 11px; }
+    .cap-detail { font-size: 11px; }
+    .scenario-header { gap: 6px; margin-bottom: 8px; }
+    .scenario-icon { font-size: 18px; }
     .scenario-name { font-size: 14px; }
     .scenario-desc { font-size: 12px; line-height: 1.6; }
-    .scenario-judgment { font-size: 12px; line-height: 1.6; }
-    .judgment-block { padding: 10px 12px; margin-bottom: 10px; }
-    .judgment-title { font-size: 13px; margin-bottom: 6px; }
-    .judgment-body { font-size: 12px; line-height: 1.7; }
-    .judgment-body ul { margin-left: 14px; }
-    .judgment-body li { margin-bottom: 2px; }
-    .action-card { padding: 10px 12px; }
-    .action-title { font-size: 13px; }
-    .action-desc { font-size: 12px; }
+    .scenario-section { margin-bottom: 16px; padding-bottom: 14px; }
+    .meeting-block { padding: 10px 12px; margin-bottom: 10px; }
+    .meeting-block-title { font-size: 13px; margin-bottom: 6px; }
+    .meeting-block-content { font-size: 12px; line-height: 1.7; }
+    .meeting-block-content ul { margin-left: 14px; }
+    .meeting-block-content li { margin-bottom: 2px; }
     .status-banner { flex-direction: column; align-items: flex-start; gap: 6px; padding: 10px 12px; }
     .status-icon { font-size: 20px; }
     .status-text { font-size: 12px; }
     .status-sub { font-size: 11px; }
+    .quote-block { padding: 10px 12px; }
+    .quote-label { font-size: 10px; }
+    .quote-text { font-size: 12px; line-height: 1.7; }
+    .quote-meta { font-size: 10px; margin-top: 8px; }
+    .note-box { padding: 8px 10px; margin-top: 10px; }
+    .note-title { font-size: 11px; margin-bottom: 4px; }
+    .note-text { font-size: 11px; line-height: 1.6; }
     .toggle-btn { font-size: 10px; padding: 2px 6px; }
     .tag { font-size: 10px; padding: 2px 6px; }
     .tl-item { gap: 8px; padding-bottom: 14px; }
@@ -124,36 +136,51 @@
   .tag-gray { background: var(--tag-bg); color: var(--text-secondary); }
   .tag-red { background: #fef2f2; color: #dc2626; }
   .tag-purple { background: #faf5ff; color: #7c3aed; }
+  .quote-block { background: linear-gradient(135deg, #fefce8 0%, #fffbeb 100%); border-left: 4px solid #f59e0b; padding: 20px 24px; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin-bottom: 20px; position: relative; }
+  .quote-block::before { content: '\201C'; position: absolute; top: 8px; left: 16px; font-size: 48px; color: rgba(245,158,11,0.2); font-family: Georgia, serif; line-height: 1; }
+  .quote-label { font-size: 11px; font-weight: 600; color: #92400e; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+  .quote-text { font-size: 15px; color: #78350f; line-height: 1.8; position: relative; z-index: 1; }
+  .quote-meta { margin-top: 12px; font-size: 12px; color: #a16207; display: flex; gap: 16px; flex-wrap: wrap; }
+  .quote-blue { background: linear-gradient(135deg,#eff6ff,#dbeafe); border-left-color:#3b82f6; }
+  .quote-blue .quote-label { color: #1e40af; }
+  .quote-blue .quote-text { color: #1e40af; }
+  .quote-blue .quote-meta { color: #3b82f6; }
   .status-banner { display: flex; align-items: center; gap: 16px; background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border: 1px solid #bfdbfe; border-radius: var(--radius-sm); padding: 16px 20px; margin-bottom: 24px; }
   .status-icon { font-size: 24px; }
   .status-text { font-size: 14px; font-weight: 600; color: #1e40af; }
   .status-sub { font-size: 13px; color: #3b82f6; }
-  .fact-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 8px; }
-  .fact-card { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 14px 16px; }
-  .fact-label { font-size: 11px; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 4px; }
-  .fact-value { font-size: 14px; font-weight: 600; color: var(--text); line-height: 1.4; }
-  .scenario-section { margin-bottom: 24px; padding-bottom: 20px; border-bottom: 2px dashed var(--border); }
+  .scenario-section { margin-bottom: 28px; padding-bottom: 24px; border-bottom: 2px dashed var(--border); }
   .scenario-section:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
-  .scenario-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
-  .scenario-icon { font-size: 20px; }
-  .scenario-name { font-size: 16px; font-weight: 700; color: var(--text); }
-  .scenario-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 10px; }
-  .scenario-judgment { background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%); border: 1px solid #fde68a; border-radius: var(--radius-sm); padding: 12px 16px; font-size: 13px; color: #92400e; line-height: 1.7; }
-  .scenario-judgment strong { color: #78350f; }
-  .judgment-block { background: var(--bg-secondary); border-radius: var(--radius-sm); padding: 18px 22px; margin-bottom: 16px; }
-  .judgment-block:last-child { margin-bottom: 0; }
-  .judgment-title { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
-  .judgment-body { font-size: 14px; color: var(--text); line-height: 1.8; }
-  .judgment-body ul { margin: 4px 0 0 18px; }
-  .judgment-body li { margin-bottom: 3px; }
-  .judgment-body strong { color: var(--accent); }
-  .action-card { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 16px 20px; margin-bottom: 12px; display: flex; gap: 14px; align-items: flex-start; }
-  .action-card:last-child { margin-bottom: 0; }
-  .action-num { width: 28px; height: 28px; border-radius: 50%; background: var(--accent); color: white; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; flex-shrink: 0; }
-  .action-content { flex: 1; }
-  .action-title { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
-  .action-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
-  .action-tag { display: inline-flex; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 500; margin-left: 6px; }
+  .scenario-header { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+  .scenario-icon { font-size: 22px; }
+  .scenario-name { font-size: 17px; font-weight: 700; color: var(--text); }
+  .scenario-desc { font-size: 13px; color: var(--text-secondary); margin-bottom: 16px; line-height: 1.7; }
+  .capability-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  .capability-table th { text-align: left; background: var(--bg-secondary); padding: 10px 14px; font-weight: 600; font-size: 13px; color: var(--text-secondary); border: 1px solid var(--border); }
+  .capability-table td { padding: 12px 14px; border: 1px solid var(--border); vertical-align: top; line-height: 1.7; }
+  .capability-table tr:hover td { background: #fafbfc; }
+  .cap-name { font-weight: 600; color: var(--accent); white-space: nowrap; min-width: 120px; }
+  .cap-detail { color: var(--text); }
+  .finding-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+  .finding-card { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 16px 18px; }
+  .finding-card.full-width { grid-column: 1 / -1; }
+  .finding-label { font-size: 11px; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px; }
+  .finding-value { font-size: 15px; font-weight: 600; color: var(--text); line-height: 1.5; }
+  .finding-detail { font-size: 13px; color: var(--text-secondary); margin-top: 4px; line-height: 1.6; }
+  .meeting-block { background: var(--bg-secondary); border-radius: var(--radius-sm); padding: 20px 24px; margin-bottom: 20px; }
+  .meeting-block:last-child { margin-bottom: 0; }
+  .meeting-block-title { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+  .meeting-block-content { font-size: 14px; color: var(--text); line-height: 1.8; }
+  .meeting-block-content ul { margin: 6px 0 0 18px; }
+  .meeting-block-content li { margin-bottom: 4px; }
+  .meeting-block-content strong { color: var(--accent); }
+  .question-item { display: flex; gap: 14px; padding: 18px 0; border-bottom: 1px solid var(--border); }
+  .question-item:last-child { border-bottom: none; }
+  .q-number { width: 28px; height: 28px; border-radius: 50%; background: var(--accent); color: white; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; flex-shrink: 0; margin-top: 2px; }
+  .q-content { flex: 1; }
+  .q-text { font-size: 15px; font-weight: 500; color: var(--text); margin-bottom: 6px; }
+  .q-answer { margin-top: 8px; padding: 10px 14px; background: #ecfdf5; border-left: 3px solid #10b981; border-radius: 0 6px 6px 0; font-size: 13px; color: #065f46; line-height: 1.7; }
+  .q-answer.pending { background: #fff7ed; border-left-color: #f59e0b; color: #92400e; }
   .timeline { margin-top: 8px; }
   .tl-item { display: flex; gap: 16px; padding-bottom: 22px; position: relative; }
   .tl-item:not(:last-child)::before { content: ''; position: absolute; left: 15px; top: 36px; bottom: 0; width: 2px; background: var(--border); }
@@ -163,6 +190,9 @@
   .tl-event { font-size: 14.5px; font-weight: 500; color: var(--text); }
   .tl-detail { font-size: 13px; color: var(--text-secondary); margin-top: 3px; }
   .footer { text-align: center; font-size: 12px; color: #94a3b8; padding: 24px 0 0; }
+  .note-box { background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); border: 1px solid #7dd3fc; border-radius: var(--radius-sm); padding: 16px 20px; margin-top: 18px; }
+  .note-title { font-size: 13px; font-weight: 700; color: #0369a1; margin-bottom: 6px; }
+  .note-text { font-size: 13px; color: #0c4a6e; line-height: 1.7; }
 </style>
 </head>
 <body>
@@ -174,10 +204,12 @@
   <div class="toc-card">
     <div class="toc-title">目录</div>
     <ul class="toc-list">
-      <li class="toc-item"><a class="toc-link" href="#sec-overview"><span class="toc-icon">📋</span><span class="toc-text">项目概况</span></a></li>
-      <li class="toc-item"><a class="toc-link" href="#sec-scenarios"><span class="toc-icon">🔍</span><span class="toc-text">场景与判断</span></a></li>
-      <li class="toc-item"><a class="toc-link" href="#sec-judgments"><span class="toc-icon">💭</span><span class="toc-text">关键判断</span></a></li>
-      <li class="toc-item"><a class="toc-link" href="#sec-next"><span class="toc-icon">🎯</span><span class="toc-text">下一步</span></a></li>
+      <li class="toc-item"><a class="toc-link" href="#sec-bg"><span class="toc-icon">📋</span><span class="toc-text">项目背景</span></a></li>
+      <li class="toc-item"><a class="toc-link" href="#sec-analysis"><span class="toc-icon">🔍</span><span class="toc-text">需求分析</span></a></li>
+      <li class="toc-item"><a class="toc-link" href="#sec-meeting1"><span class="toc-icon">📞</span><span class="toc-text">5/28 腾讯云建联</span></a></li>
+      <li class="toc-item"><a class="toc-link" href="#sec-internal"><span class="toc-icon">💬</span><span class="toc-text">5/28 内部讨论</span></a></li>
+      <li class="toc-item"><a class="toc-link" href="#sec-meeting2"><span class="toc-icon">🎯</span><span class="toc-text">5/29 比亚迪需求对齐</span></a></li>
+      <li class="toc-item"><a class="toc-link" href="#sec-6-1"><span class="toc-icon">💭</span><span class="toc-text">6/1 内部讨论</span></a></li>
       <li class="toc-item"><a class="toc-link" href="#sec-timeline"><span class="toc-icon">📅</span><span class="toc-text">时间线</span></a></li>
     </ul>
   </div>
@@ -205,259 +237,500 @@
 <div class="status-banner">
   <div class="status-icon">🟢</div>
   <div>
-    <div class="status-text">当前阶段：需求收集完成 → 匹配覆盖能力 + 输出方案</div>
-    <div class="status-sub">等 paulotang 出差回来推进 → 安排周四碰面 → 6月 李科总 × Dowson 高层会面</div>
+    <div class="status-text">当前阶段：启动双方对接 · 基于国家清单优先级匹配覆盖能力 → 输出方案</div>
+    <div class="status-sub">5/29 已完成需求收集，确认3+1场景。下一步：启动双方对接 → 基于国家清单优先级匹配我方覆盖能力 → 输出方案</div>
   </div>
 </div>
 
-<!-- ===== 1. 项目概况 ===== -->
-<section class="section" id="sec-overview">
+<!-- ===== 1. 项目背景 ===== -->
+<section class="section" id="sec-bg">
   <div class="section-header">
     <div class="section-icon" style="background:#e6f2fc;color:#0068b7;">📋</div>
-    <h2 class="section-title">一、项目概况</h2>
+    <h2 class="section-title">一、项目背景</h2>
+    <span class="tag tag-blue">已知信息</span>
   </div>
-  <div class="fact-grid">
-    <div class="fact-card">
-      <div class="fact-label">客户</div>
-      <div class="fact-value">比亚迪海外闪充业务</div>
-    </div>
-    <div class="fact-card">
-      <div class="fact-label">覆盖地区</div>
-      <div class="fact-value">亚太29国 + 欧洲5大国</div>
-    </div>
-    <div class="fact-card">
-      <div class="fact-label">现有收单</div>
-      <div class="fact-value">PingPong + JP Morgan</div>
-    </div>
-    <div class="fact-card">
-      <div class="fact-label">确认场景</div>
-      <div class="fact-value">3+1：本对本 · 跨境OTA · 港人北上 · 集团结算（待定）</div>
-    </div>
-    <div class="fact-card">
-      <div class="fact-label">合作方式</div>
-      <div class="fact-value">可能需竞标 · 期望一家覆盖</div>
-    </div>
-    <div class="fact-card">
-      <div class="fact-label">接口人</div>
-      <div class="fact-value">paulotang（唐鹏镐）· 腾讯云 ringyao（姚琴）</div>
-    </div>
+  <div class="quote-block">
+    <div class="quote-label">客户原始需求（原文）</div>
+    <div class="quote-text">比亚迪面向海外全面布局了<strong>闪充业务</strong>，所以希望能够了解 <strong>Tenpay 的全球支付方案</strong>，如在<strong>车端、手机端怎样更好闭环支付</strong>等等</div>
+    <div class="quote-meta"><span>📎 来源：腾讯云团队转达（比亚迪方）</span><span>🕐 时间：2026年5月</span></div>
   </div>
+  <div class="quote-block quote-blue">
+    <div class="quote-label">引荐方补充信息（原文）</div>
+    <div class="quote-text">比亚迪是汽车行业超大型企业，目前战略也在全球出海。每年 pony 与王传福总会也会面一次，聊到出海业务的合作。我们准备<strong>6月约王总夫人-海外业务负责人汇报</strong>。支付业务这块我们也不熟悉，看下 paulo 我们一起<strong>约客户海外团队沟通两场，做下调研和定制化方案</strong>。</div>
+    <div class="quote-meta"><span>👤 来源：ringyao（姚琴）· 腾讯云团队</span><span>🏷️ 接口人：paulotang（唐鹏镐）</span></div>
+  </div>
+    <div style="margin-top:24px;">
+      <div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:14px;display:flex;align-items:center;gap:8px;">📌 已确认的关键事实</div>
+      <div class="finding-grid">
+        <div class="finding-card">
+          <div class="finding-label">合作性质</div>
+          <div class="finding-value">可能需竞标 · 期望一家覆盖</div>
+          <div class="finding-detail">比亚迪希望一个供应商 cover 所有市场，但可逐步推进落地。支付服务商选型可能需要竞标</div>
+        </div>
+        <div class="finding-card">
+          <div class="finding-label">覆盖地区</div>
+          <div class="finding-value">亚太29国 + 欧洲5大国</div>
+          <div class="finding-detail">亚太（港澳泰马印尼新菲韩日澳新等）+ 欧洲（英法德意西）。建议先在香港落地标杆场景</div>
+        </div>
+        <div class="finding-card">
+          <div class="finding-label">闪充海外状态</div>
+          <div class="finding-value">尚未上线 · 支付是依赖项</div>
+          <div class="finding-detail">海外APP独立于国内APP，部分地区独立主体运营，本地有主体，本地收本地币种</div>
+        </div>
+        <div class="finding-card">
+          <div class="finding-label">现有收单服务商</div>
+          <div class="finding-value">PingPong + JP Morgan</div>
+          <div class="finding-detail">目前商城由 PingPong 和摩根提供收单服务，闪充海外尚未上线</div>
+        </div>
+        <div class="finding-card">
+          <div class="finding-label">确认的3+1场景</div>
+          <div class="finding-value">海外本对本 · 跨境OTA · 港人北上 · 集团结算（待定）</div>
+          <div class="finding-detail">5/29会议确认3个具体场景+1个待财务团队讨论的集团内结算场景</div>
+        </div>
+        <div class="finding-card">
+          <div class="finding-label">腾讯云合作基础</div>
+          <div class="finding-value">智驾云 + 座舱 + 地图 + AI + APP上云</div>
+          <div class="finding-detail">云与比亚迪已有全面合作基础，支付是新增领域，腾讯云希望生态绑定</div>
+        </div>
+      </div>
+    </div>
 </section>
 
-<!-- ===== 2. 场景与判断 ===== -->
-<section class="section" id="sec-scenarios">
-  <div class="section-header">
+<!-- ===== 2. 需求分析 ===== -->
+<section class="section collapsible open" id="sec-analysis">
+  <div class="section-header" onclick="toggleSection('sec-analysis')">
     <div class="section-icon" style="background:#ecfdf5;color:#059669;">🔍</div>
-    <h2 class="section-title">二、场景与判断</h2>
-  </div>
-
-  <div class="scenario-section">
-    <div class="scenario-header">
-      <span class="scenario-icon">⚡</span>
-      <span class="scenario-name">场景 A：海外本对本收单（闪充 + 商城）</span>
-      <span class="tag tag-red" style="font-size:11px;">客户最优先</span>
-    </div>
-    <div class="scenario-desc">本地用户用本地支付方式付给比亚迪境外主体，本币收单。闪充体验为预授权→Token代扣（无感支付），用户不付则下次不可充电。现有 PingPong + JP Morgan 服务商城场景，闪充尚未上线。</div>
-    <div class="scenario-judgment">
-      <strong>判断：</strong>客户最优先场景，但我们全球收单覆盖有限（尤其欧洲），需评估哪些市场能切进去。大部分地区在我们的覆盖范围内，<strong>只是先后顺序问题</strong>——先香港→新加坡→欧洲。欧洲能力明年上半年可能还不够，可以卖期货但需匹配时间。
-    </div>
-  </div>
-
-  <div class="scenario-section">
-    <div class="scenario-header">
-      <span class="scenario-icon">🔄</span>
-      <span class="scenario-name">场景 B：跨境 OTA 软件售卖 · 资金入境</span>
-      <span class="tag tag-orange" style="font-size:11px;">我方核心机会</span>
-    </div>
-    <div class="scenario-desc">海外用户在车端购买软件服务，钱需合规入境结算给境内开发者。涉及两段能力：① 收单 ② 收款入境+合规申报。</div>
-    <div class="scenario-judgment">
-      <strong>判断：</strong>这是我方切进去的关键机会——比亚迪主动提出此场景。<br>
-      <strong>⚠️ 合规风险：</strong>如果是比亚迪自研软件→风险可控；如果是第三方软件（TME/QQ音乐等）→版权地域限制+本地化合规成本极重。必须先确认具体是什么软件场景，才能设计支付方案。
-    </div>
-  </div>
-
-  <div class="scenario-section">
-    <div class="scenario-header">
-      <span class="scenario-icon">🇭🇰</span>
-      <span class="scenario-name">场景 C：港人北上充电</span>
-      <span class="tag tag-green" style="font-size:11px;">方案最成熟</span>
-    </div>
-    <div class="scenario-desc">港人在大陆充电，用 WeChat Pay HK 支付，资金入境给大陆桩运营子公司。需同一 APP 支持双商户主体（香港主体收港币+大陆主体收人民币）。</div>
-    <div class="scenario-judgment">
-      <strong>判断：</strong>方案成熟度最高——WPHK 融合收银台已灰度测试（拼多多等已支持双钱包切换）。<strong>建议作为首个标杆落地场景</strong>。
-    </div>
-  </div>
-
-  <div class="scenario-section">
-    <div class="scenario-header">
-      <span class="scenario-icon">🏢</span>
-      <span class="scenario-name">场景 D：集团内跨境结算</span>
-      <span class="tag tag-gray" style="font-size:11px;">待定</span>
-    </div>
-    <div class="scenario-desc">比亚迪表示这可能是财务团队需求，当前对接的是闪充业务团队。需后续与财务团队单独沟通。</div>
-    <div class="scenario-judgment">
-      <strong>判断：</strong>暂不作为重点推进，等香港标杆落地后拉财务团队专项讨论。
-    </div>
-  </div>
-</section>
-
-<!-- ===== 3. 关键判断 ===== -->
-<section class="section collapsible open" id="sec-judgments">
-  <div class="section-header" onclick="toggleSection('sec-judgments')">
-    <div class="section-icon" style="background:#fef3c7;color:#92400e;">💭</div>
-    <h2 class="section-title">三、关键判断</h2>
-    <span class="tag tag-orange">基于4次沟通（5/28-6/1）</span>
+    <h2 class="section-title">二、需求分析（场景 → 所需能力）</h2>
+    <span class="tag tag-green">5/29 会议确认</span>
     <button class="toggle-btn"><span class="toggle-chevron">▼</span>收起</button>
   </div>
   <div class="collapsed-summary">
-    客户在"选我们" · 场景B合规前置 · 能力先香港启动 · 腾讯云大包特包 · Sale为主先拿下来
+    ⚡ 海外本对本收单（闪充+商城）· 🔄 跨境OTA软件售卖资金入境 · 🇭🇰 港人北上充电 · 🏢 集团内结算（待定）
   </div>
   <div class="collapsible-body">
-
-    <div class="judgment-block">
-      <div class="judgment-title">🔹 客户策略：比亚迪在"选我们"</div>
-      <div class="judgment-body"><ul>
-        <li>不透露优先级，反问"你们微信在哪些地方比较强"——<strong>看我们出什么牌</strong>，再来选择怎么用我们</li>
-        <li>想要<strong>资源置换</strong>——不只采购支付，还想要流量赋能（微信海外公开课、当地用户导流等）</li>
-        <li>希望选腾讯<strong>"一整包"</strong>（云+支付+流量+地图），看我们有什么附加价值</li>
-        <li>参考：腾讯云给沃尔玛方案也是"大包特包"，我们是被包的一块</li>
-      </ul></div>
+    <!-- 场景A -->
+    <div class="scenario-section">
+      <div class="scenario-header">
+        <span class="scenario-icon">⚡</span>
+        <span class="scenario-name">场景 A：海外本对本收单（闪充 + 商城）</span>
+        <span class="tag tag-red" style="font-size:11px;">客户主动提 · 最优先</span>
+      </div>
+      <div class="scenario-desc">
+        海外车主在比亚迪海外 APP 中使用闪充充电、购买商城商品。<strong>本地用户用本地支付方式付给比亚迪境外主体</strong>，属于本对本收单，不需要跨境支付。<br>
+        <strong>核心需求：</strong>支持各国本地主流支付方式；闪充体验为<strong>先充后付+无感支付</strong>（预授权→Token 代扣），用户不付则下次无法充电。
+      </div>
+      <table class="capability-table">
+        <thead><tr><th style="width:25%">所需能力</th><th style="width:75%">具体说明</th></tr></thead>
+        <tbody>
+          <tr><td class="cap-name">🌐 全球收单</td><td class="cap-detail">覆盖亚太+欧洲主流支付方式（银行卡+本地钱包），需各地牌照。比亚迪关心<strong>支付方式覆盖度</strong></td></tr>
+          <tr><td class="cap-name">🔐 预授权 & Token 代扣</td><td class="cap-detail">充电场景：插枪→预授权冻结额度→充电完成→自动扣款。用户不付则拉黑下次不可充。<strong>无感支付是核心体验诉求</strong></td></tr>
+          <tr><td class="cap-name">📱 APP 内集成</td><td class="cap-detail">海外独立 APP（非小程序），集成支付收银台。国内1个APP，国外1个APP，部分地区独立主体运营</td></tr>
+          <tr><td class="cap-name">🏪 商城收单</td><td class="cap-detail">车主 APP 内商城商品支付，与闪充共用同一套收单能力</td></tr>
+        </tbody>
+      </table>
+      <div class="note-box" style="margin-top:12px;">
+        <div class="note-title">📋 已知信息</div>
+        <div class="note-text">
+          · 地区：<strong>亚太29国</strong>（港澳泰马印尼新菲韩日澳新等）+ <strong>欧洲5大国</strong>（英法德意西）<br>
+          · 运营：本地都有主体，希望<strong>本地支付本地币种收</strong>，不需要跨境<br>
+          · 现有服务商：<strong>PingPong + JP Morgan</strong>（目前服务商城场景，闪充尚未上线）<br>
+          · 选型方式：<strong>可能需要竞标</strong>，希望一家供应商 cover 所有市场，可逐步推进<br>
+          · 标杆策略：建议<strong>先在香港落地标杆场景</strong>，再逐步扩展
+        </div>
+      </div>
     </div>
 
-    <div class="judgment-block">
-      <div class="judgment-title">🔹 场景B合规前置——必须先看具体软件场景</div>
-      <div class="judgment-body"><ul>
-        <li>比亚迪自研软件→风险可控，OTA 收款入境路径清晰</li>
-        <li>第三方软件（TME/QQ音乐等）→<strong>版权地域限制+本地化合规成本极重</strong>（如周杰伦的歌在欧洲无版权，卖绿钻涉侵权）</li>
-        <li>比亚迪在跟 TME 聊车机娱乐合作，会打包看有什么软件能在海外提供给车机</li>
-        <li>参考：腾讯游戏出海有专门本地化合规审核团队，合规成本非常重</li>
-        <li>结论：<strong>场景B必须先确认具体软件场景</strong>，才能设计支付方案</li>
-      </ul></div>
+    <!-- 场景B -->
+    <div class="scenario-section">
+      <div class="scenario-header">
+        <span class="scenario-icon">🔄</span>
+        <span class="scenario-name">场景 B：跨境 OTA 软件售卖 · 资金入境</span>
+        <span class="tag tag-orange" style="font-size:11px;">客户主动提 · 我方核心优势区</span>
+      </div>
+      <div class="scenario-desc">
+        比亚迪境外车载 OTA 软件收费场景：海外用户在车端购买软件服务（如增值功能），<strong>钱需要结算给境内开发者/主体</strong>，属于<strong>跨境软件服务资金入境</strong>。<br>
+        <strong>核心需求：</strong>海外用户支付 + 资金合规入境到境内主体。类似国内开发者在苹果/Google Play 售卖软件，钱需回到国内。
+      </div>
+      <table class="capability-table">
+        <thead><tr><th style="width:25%">所需能力</th><th style="width:75%">具体说明</th></tr></thead>
+        <tbody>
+          <tr><td class="cap-name">🌐 海外收单</td><td class="cap-detail">海外用户在车端/APP 端支付本地币种购买 OTA 软件</td></tr>
+          <tr><td class="cap-name">💸 跨境收款入境</td><td class="cap-detail">海外收单资金 → 通过合规通道入境 → 结算给境内开发者/主体。需提供<strong>收单记录作为合规申报依据</strong></td></tr>
+          <tr><td class="cap-name">📝 合规申报</td><td class="cap-detail">资金入境需要向监管提供交易真实性证明（APP 收单记录等），TenpayGlobal 可协助对接监管完成申报</td></tr>
+        </tbody>
+      </table>
+      <div class="note-box" style="margin-top:12px;">
+        <div class="note-title">💡 这是我们切进去的关键机会</div>
+        <div class="note-text">
+          · 比亚迪主动提出此场景<br>
+          · 涉及两段能力：<strong>① 收单 ② 收款入境+合规申报</strong>
+        </div>
+      </div>
     </div>
 
-    <div class="judgment-block">
-      <div class="judgment-title">🔹 能力覆盖：先香港启动，欧洲需要时间</div>
-      <div class="judgment-body"><ul>
-        <li>比亚迪地区顺序：先提欧洲5国→再提亚太，但本质看我们哪里强</li>
-        <li>24年出口量：巴西、泰国、印尼、土耳其较大；日本 3000+辆（已自接 NTT 收单）</li>
-        <li>大部分地区在我们覆盖范围内，<strong>只是先后顺序问题</strong></li>
-        <li>能力建设路径：<strong>香港→新加坡→欧洲</strong>，欧洲明年上半年可能还不够</li>
-      </ul></div>
+    <!-- 场景C -->
+    <div class="scenario-section">
+      <div class="scenario-header">
+        <span class="scenario-icon">🇭🇰</span>
+        <span class="scenario-name">场景 C：港人北上充电</span>
+        <span class="tag tag-blue" style="font-size:11px;">客户主动提 · WPHK 已有类似能力</span>
+      </div>
+      <div class="scenario-desc">
+        香港用户到大陆使用充电桩，希望<strong>在香港 APP 中用香港支付方式（如 WeChat Pay HK）</strong>支付充电费用。<strong>钱需入境给大陆桩的运营子公司</strong>。<br>
+        <strong>核心需求：</strong>同一 APP 内支持两地支付方式，背后涉及两个商户主体（香港主体收港币→跨境转入大陆主体）。
+      </div>
+      <table class="capability-table">
+        <thead><tr><th style="width:25%">所需能力</th><th style="width:75%">具体说明</th></tr></thead>
+        <tbody>
+          <tr><td class="cap-name">🇭🇰 WeChat Pay HK</td><td class="cap-detail">香港用户用 HK 钱包扫码支付，WPHK 应该已支持类似场景</td></tr>
+          <tr><td class="cap-name">🔀 双商户主体</td><td class="cap-detail">香港主体开通港币支付 → 大陆主体开通人民币支付，同一 APP 对接两个商户号，收银台根据用户身份展示不同支付方式</td></tr>
+          <tr><td class="cap-name">💸 跨境资金转移</td><td class="cap-detail">香港主体收到港币 → 需跨境转移到大陆桩运营子公司，涉及两地主体间的合规协议</td></tr>
+        </tbody>
+      </table>
+      <div class="note-box" style="margin-top:12px;">
+        <div class="note-title">📋 已知信息</div>
+        <div class="note-text">
+          · 目前香港用户到大陆充电<strong>还不支持</strong>，只能切换到大陆 APP 用微信支付<br>
+          · 比亚迪期望：<strong>一个 APP 扫码，自动识别身份</strong>，展示对应支付方式<br>
+          · 微信支付"融合收银台"已在灰度测试（如拼多多已支持境内/香港双钱包切换）<br>
+          · <strong>香港是双方建议的首个标杆落地场景</strong>
+        </div>
+      </div>
     </div>
 
-    <div class="judgment-block">
-      <div class="judgment-title">🔹 闪充支付：闭环到 APP + 预授权模式</div>
-      <div class="judgment-body"><ul>
-        <li>比亚迪倾向<strong>全部闭环到 APP</strong>——沉淀用户资产，强制用户下载</li>
-        <li>闪充做<strong>预授权模式</strong>（插枪→冻结额度→充电→自动扣款）</li>
-        <li>第三方充电桩线下支付（碰卡/PoS），三方自己解决</li>
-        <li><strong>需跟比亚迪确认闪充业务形态</strong>，才能设计具体支付方案</li>
-      </ul></div>
+    <!-- 场景D -->
+    <div class="scenario-section">
+      <div class="scenario-header">
+        <span class="scenario-icon">🏢</span>
+        <span class="scenario-name">场景 D：集团内跨境结算（待定）</span>
+        <span class="tag tag-gray" style="font-size:11px;">可能是财务团队需求 · 后续讨论</span>
+      </div>
+      <div class="scenario-desc">比亚迪表示这可能是财务团队的需求，本次会议主要是闪充业务团队，财务相关问题需后续单独沟通。</div>
+      <div class="note-box" style="margin-top:8px;">
+        <div class="note-title">⏳ 下一步</div>
+        <div class="note-text">确定香港标杆场景后，可基于香港业务方 + 财务团队 + 我方能力方案进行专项讨论</div>
+      </div>
     </div>
-
-    <div class="judgment-block">
-      <div class="judgment-title">🔹 腾讯云角色：已拿下战略合作，all-in 比亚迪</div>
-      <div class="judgment-body"><ul>
-        <li>姚琴所在<strong>"智慧出行出海项目组"</strong> all-in 比亚迪 case，从各 team 拉人</li>
-        <li>张磊（rain）是姚琴老板，强销售</li>
-        <li>腾讯云已拿下比亚迪战略合作（智驾云、座舱、AI、地图、APP上云），想更紧密绑定</li>
-        <li>比亚迪已把<strong>车载地图全面换成腾讯原生地图</strong>（之前是高德打包）</li>
-      </ul></div>
-    </div>
-
   </div>
 </section>
 
-<!-- ===== 4. 下一步 ===== -->
-<section class="section" id="sec-next">
-  <div class="section-header">
-    <div class="section-icon" style="background:#fef2f2;color:#e11d48;">🎯</div>
-    <h2 class="section-title">四、下一步</h2>
-  </div>
-
-  <div class="action-card">
-    <div class="action-num">1</div>
-    <div class="action-content">
-      <div class="action-title">等 paulotang 出差回来，安排周四碰面<span class="action-tag" style="background:#fef2f2;color:#dc2626;">阻塞中</span></div>
-      <div class="action-desc">碰面对齐内部判断，明确我方优势和话术策略</div>
-    </div>
-  </div>
-
-  <div class="action-card">
-    <div class="action-num">2</div>
-    <div class="action-content">
-      <div class="action-title">下次沟通：把优势说清楚，不能太实诚</div>
-      <div class="action-desc">参考竞对策略：先搞下来再做，Sale 为主。我们是被腾讯云"包"的一块，要配合云的打包策略</div>
-    </div>
-  </div>
-
-  <div class="action-card">
-    <div class="action-num">3</div>
-    <div class="action-content">
-      <div class="action-title">基于比亚迪优先国家清单，匹配我方覆盖能力 → 输出方案</div>
-      <div class="action-desc">哪些马上能支持、哪些在开区计划中。新地区银行报备周期 4-7 个月</div>
-    </div>
-  </div>
-
-  <div class="action-card">
-    <div class="action-num">4</div>
-    <div class="action-content">
-      <div class="action-title">6月：李科总 × Dowson 高层会面</div>
-      <div class="action-desc">推整体海外方案和生态合作。在此前需完成方案输出</div>
-    </div>
-  </div>
-
-  <div class="action-card">
-    <div class="action-num">5</div>
-    <div class="action-content">
-      <div class="action-title">场景B：确认具体软件场景后再设计支付方案</div>
-      <div class="action-desc">需确认是比亚迪自研还是第三方（TME等），合规路径完全不同</div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== 5. 时间线 ===== -->
-<section class="section collapsible" id="sec-timeline">
-  <div class="section-header" onclick="toggleSection('sec-timeline')">
-    <div class="section-icon" style="background:#fff1f2;color:#e11d48;">📅</div>
-    <h2 class="section-title">五、时间线</h2>
+<!-- ===== 3. 建联会议纪要 ===== -->
+<section class="section collapsible" id="sec-meeting1">
+  <div class="section-header" onclick="toggleSection('sec-meeting1')">
+    <div class="section-icon" style="background:#fff7ed;color:#d97706;">📞</div>
+    <h2 class="section-title">三、建联会议纪要（5/28）</h2>
+    <span class="tag tag-green">✅ 已完成</span>
     <button class="toggle-btn"><span class="toggle-chevron">▼</span>展开</button>
   </div>
+  <div class="collapsed-summary">5/28 11:30-12:00 与腾讯云 ringyao、kejayhuang 建联。确认合作背景、历史需求、明天会议安排</div>
+  <div class="collapsible-body">
+    <div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:20px;font-size:13px;color:var(--text-secondary);">
+      <span>🕐 2026-05-28 11:30-12:00</span>
+      <span>👥 顾雪蕊 · ringyao（姚琴）· kejayhuang（黄开金）</span>
+    </div>
+
+    <div style="margin-bottom:24px;">
+      <div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:14px;display:flex;align-items:center;gap:8px;">📌 建联阶段已知信息</div>
+      <div class="finding-grid">
+        <div class="finding-card">
+          <div class="finding-label">客户需求</div>
+          <div class="finding-value">海外闪充支付方案</div>
+          <div class="finding-detail">车端+手机端闭环支付，了解 Tenpay 全球支付能力</div>
+        </div>
+        <div class="finding-card">
+          <div class="finding-label">出海方向</div>
+          <div class="finding-value">欧洲首站 + 全球布局</div>
+          <div class="finding-detail">借助4月欧洲发布的腾势品牌，结合闪充与支付体验</div>
+        </div>
+        <div class="finding-card">
+          <div class="finding-label">闪充海外状态</div>
+          <div class="finding-value">尚未上线 · 支付是依赖项</div>
+          <div class="finding-detail">海外APP独立于国内APP，部分地区独立主体运营</div>
+        </div>
+        <div class="finding-card">
+          <div class="finding-label">腾讯云合作基础</div>
+          <div class="finding-value">智驾云 + 座舱 + 地图 + AI + APP上云</div>
+          <div class="finding-detail">云与比亚迪已有全面合作基础，支付是新增领域，腾讯云希望生态绑定</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="meeting-block">
+      <div class="meeting-block-title">🔹 比亚迪闪充海外部署计划</div>
+      <div class="meeting-block-content"><ul><li>比亚迪计划将国内闪充技术复制到海外，<strong>首站欧洲</strong></li><li>借助今年 4 月在欧洲发布的<strong>腾势品牌</strong>，结合闪充与支付体验</li><li><strong>闪充尚未在海外上线，支付是重要依赖项</strong></li></ul></div>
+    </div>
+    <div class="meeting-block">
+      <div class="meeting-block-title">🔹 历史背景：1年前找过微信支付</div>
+      <div class="meeting-block-content"><ul><li>比亚迪1-2年前曾找微信支付讨论出海支付方案</li><li><strong>微信支付无法提供全球统一入口</strong>——各国需分别对接代理商</li><li>后因<strong>组织架构调整</strong>，需求未继续跟进</li></ul></div>
+    </div>
+    <div class="meeting-block">
+      <div class="meeting-block-title">🔹 合作定位 & 终极目标</div>
+      <div class="meeting-block-content"><ul><li><strong>不局限于闪充</strong>，应泛聊比亚迪海外支付体系的需求</li><li>腾讯云与比亚迪已有<strong>云合作基础</strong>，希望生态绑定</li><li>最终方案要推到<strong>李科总（王传福夫人）× Dowson</strong> 高层会面</li></ul></div>
+    </div>
+    <div class="meeting-block">
+      <div class="meeting-block-title">🔹 会议结论</div>
+      <div class="meeting-block-content"><ul><li><strong>5/29 下午</strong>线下比亚迪坪山做需求收集</li><li>会议形式：先由比亚迪介绍需求→Tenpay 介绍能力→展开讨论</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 4. 内部讨论关键结论 ===== -->
+<section class="section collapsible" id="sec-internal">
+  <div class="section-header" onclick="toggleSection('sec-internal')">
+    <div class="section-icon" style="background:#faf5ff;color:#7c3aed;">💬</div>
+    <h2 class="section-title">四、内部讨论关键结论（5/28 下午）</h2>
+    <span class="tag tag-purple">✅ 已完成</span>
+    <button class="toggle-btn"><span class="toggle-chevron">▼</span>展开</button>
+  </div>
+  <div class="collapsed-summary">大概率本对本收单 · 线上为主 · 收款可能切不进去需验证 · 明日聊需求无需抛方案 · 4人+腾讯云商务赴会</div>
+  <div class="collapsible-body">
+    <div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:20px;font-size:13px;color:var(--text-secondary);">
+      <span>🕐 2026-05-28 16:28-16:41</span><span>👥 内部团队讨论</span>
+    </div>
+    <div class="meeting-block">
+      <div class="meeting-block-title">🔹 业务本质：大概率本对本收单，是否跨境待确认</div>
+      <div class="meeting-block-content"><ul><li>核心场景大概率是<strong>海外本地用户用本地支付方式付给比亚迪境外主体</strong></li><li>但<strong>是否涉及跨境（如资金回流境内）尚不确定</strong></li><li>承载方式包含<strong>独立 APP + 车机端</strong>（不是小程序）</li></ul></div>
+    </div>
+    <div class="meeting-block">
+      <div class="meeting-block-title">🔹 线上 vs 线下</div>
+      <div class="meeting-block-content"><ul><li><strong>线上收单</strong>（APP/车机扫码、绑卡支付）——我们覆盖</li><li><strong>线下收单</strong>（充电桩拍卡/PoS 机）——需机具服务商，我们<strong>不覆盖</strong></li></ul></div>
+    </div>
+    <div class="meeting-block">
+      <div class="meeting-block-title">🔹 收款可能切不进去，需线下讨论验证</div>
+      <div class="meeting-block-content"><ul><li>收单是对方核心诉求，<strong>收款可能切不进去</strong>，但需线下验证</li><li>大企业通常自有全球账户和财务体系（<strong>参考喜茶案例</strong>）</li><li>明天对方来的是<strong>闪充业务团队</strong>（非财务团队），财务问题可能无法回答</li></ul></div>
+    </div>
+    <div class="meeting-block">
+      <div class="meeting-block-title">🔹 会议策略 & 参会确认</div>
+      <div class="meeting-block-content"><ul><li><strong>聊需求，本次无需抛具体解决方案</strong>——下次带方案去</li><li>我方<strong>4人</strong>出席 + <strong>腾讯云商务3人</strong></li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 5. 5/29 需求收集会议 ===== -->
+<section class="section collapsible open" id="sec-meeting2">
+  <div class="section-header" onclick="toggleSection('sec-meeting2')">
+    <div class="section-icon" style="background:#fef2f2;color:#e11d48;">🎯</div>
+    <h2 class="section-title">五、5/29 比亚迪需求收集会议</h2>
+    <span class="tag tag-green">✅ 已完成</span>
+    <button class="toggle-btn"><span class="toggle-chevron">▼</span>收起</button>
+  </div>
+  <div class="collapsed-summary">5/29 14:05-15:28 · 线下坪山 · 确认3+1场景 · 建议香港先做标杆 · 下一步：启动双方对接·基于国家清单优先级匹配覆盖·输出方案</div>
+  <div class="collapsible-body">
+    <div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:20px;font-size:13px;color:var(--text-secondary);">
+      <span>🕐 2026-05-29 14:05-15:28</span>
+      <span>👥 我方4人 + 腾讯云商务3人 + 比亚迪闪充业务团队</span>
+      <span>📍 比亚迪坪山 · 线下</span>
+    </div>
+
+    <div class="meeting-block">
+      <div class="meeting-block-title">🔹 确认3+1个支付场景</div>
+      <div class="meeting-block-content">
+        <ul>
+          <li><strong>场景A 海外本对本</strong>：车主 APP 闪充支付 + 商城商品支付。本地用户→本地主体，本币收单，不涉及跨境</li>
+          <li><strong>场景B 跨境OTA</strong>：境外车载 OTA 软件收费，用户在海外付款，<strong>资金需入境结算给境内开发者</strong></li>
+          <li><strong>场景C 港人北上</strong>：港人在大陆充电，希望用香港支付方式，钱入境给大陆桩运营子公司</li>
+          <li><strong>场景D 集团内结算</strong>：比亚迪表示这可能是财务团队的需求，需后续单独沟通</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="meeting-block">
+      <div class="meeting-block-title">🔹 场景A 关键信息</div>
+      <div class="meeting-block-content">
+        <ul>
+          <li>地区：<strong>亚太29国</strong>（港澳泰马印尼新菲韩日澳新等）+ <strong>欧洲5大国</strong>（英法德意西）</li>
+          <li>运营：国内1个APP，国外1个APP。部分地区独立主体运营，<strong>本地都有主体，本地支付本地币种收</strong></li>
+          <li>现有服务商：<strong>PingPong + JP Morgan</strong>提供收单（商城场景），闪充尚未上线</li>
+          <li>闪充体验：<strong>先充后付 + 无感支付</strong>（预授权→Token 代扣），用户不付则下次不可充</li>
+          <li>核心关心：<strong>支付方式覆盖度</strong>——需支持各国本地主流支付方式</li>
+          <li>选型方式：<strong>可能需要竞标</strong>，希望一家供应商 cover 所有市场，可逐步推进</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="meeting-block">
+      <div class="meeting-block-title">🔹 场景B 关键信息——我方优势区</div>
+      <div class="meeting-block-content">
+        <ul>
+          <li>比亚迪主动提出：境外车载 OTA 收费，<strong>资金需回到境内开发者</strong></li>
+          <li>类似国内开发者在苹果/Google Play 卖软件的收款模式</li>
+          <li>分两段：<strong>① 闭源负责海外收单 ② 我们负责收款入境+合规申报</strong></li>
+          <li>对方关注合规问题——我们具备收单记录+监管申报的端到端能力</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="meeting-block">
+      <div class="meeting-block-title">🔹 场景C 关键信息</div>
+      <div class="meeting-block-content">
+        <ul>
+          <li>目前香港用户到大陆充电<strong>还不支持</strong>，只能切大陆 APP 用微信支付</li>
+          <li>需要：同一 APP 支持<strong>双商户主体</strong>（香港主体收港币+大陆主体收人民币）</li>
+          <li>涉及<strong>香港→大陆跨境资金转移</strong>，需两地主体间合规协议</li>
+          <li>微信支付"融合收银台"已在灰度（拼多多等已支持双钱包切换），方案成熟度较高</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="meeting-block">
+      <div class="meeting-block-title">🔹 落地策略 & 下一步</div>
+      <div class="meeting-block-content">
+        <ul>
+          <li>双方一致同意<strong>先在香港落地标杆场景</strong>，验证能力后再扩展</li>
+          <li>比亚迪需给出<strong>优先国家清单</strong>，我方匹配覆盖能力（哪些马上能支持、哪些在开区计划中）</li>
+          <li>新地区银行报备周期：<strong>快4-5个月，慢6-7个月</strong></li>
+          <li>下次会议：<strong>带具体方案去</strong>，不再只聊需求</li>
+          <li>确定香港后，可约<strong>香港业务方 + 财务团队 + 我方</strong>做专项讨论</li>
+          <li>比亚迪将<strong>拉新的海外支付专项群</strong>（之前的群是其他业务线）</li>
+          <li>比亚迪对于在微信海外公开课等场合<strong>推比亚迪标杆案例</strong>有兴趣，希望借助腾讯的力量拓展更多客户</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 6. 6/1 内部讨论 ===== -->
+<section class="section collapsible" id="sec-6-1">
+  <div class="section-header" onclick="toggleSection('sec-6-1')">
+    <div class="section-icon" style="background:#fef3c7;color:#92400e;">💭</div>
+    <h2 class="section-title">六、内部讨论·出差后复盘（6/1）</h2>
+    <span class="tag tag-orange">✅ 已完成</span>
+    <button class="toggle-btn"><span class="toggle-chevron">▼</span>展开</button>
+  </div>
+  <div class="collapsed-summary">6/1 内部复盘：客户在"选我们"· 场景B合规风险重 · 比亚迪想要资源置换 · 能力先从香港启动 · 等paulotang回来推进</div>
+  <div class="collapsible-body">
+    <div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:20px;font-size:13px;color:var(--text-secondary);">
+      <span>🕐 2026-06-01 11:18-12:17</span><span>👥 内部团队讨论（出差后复盘）</span><span style="color:#dc2626;">⚠️ 前段未录制</span>
+    </div>
+
+    <div class="meeting-block">
+      <div class="meeting-block-title">🔹 客户策略：比亚迪在"选我们"</div>
+      <div class="meeting-block-content"><ul>
+        <li>问优先地区，比亚迪<strong>不说自己的规划</strong>，反问"你们微信在哪些地方比较强"</li>
+        <li>客户态度：不透露优先级，<strong>看我们出什么牌</strong>，再来选择怎么用我们</li>
+        <li>想要<strong>资源置换</strong>——不只想采购支付能力，还希望腾讯提供流量赋能（微信海外公开课、当地用户导流等）</li>
+        <li>希望选腾讯<strong>"一整包"</strong>（云+支付+流量+地图等），看我们有什么附加价值</li>
+        <li>与腾讯云类似案例：沃尔玛方案也是"大包特包"，我们是被包的一块</li>
+      </ul></div>
+    </div>
+
+    <div class="meeting-block">
+      <div class="meeting-block-title">🔹 场景B合规风险深挖</div>
+      <div class="meeting-block-content"><ul>
+        <li>如果是<strong>比亚迪自己的软件</strong>→风险可控，OTA 收款入境路径清晰</li>
+        <li>如果是<strong>第三方软件</strong>（微信、QQ音乐、全民K歌等）→合规问题非常复杂：
+          <ul>
+            <li>版权地域限制：国内有版权≠海外有版权（如周杰伦的歌在欧洲无版权），在欧洲卖绿钻涉及侵权风险</li>
+            <li>比亚迪在跟 TME（腾讯音乐）聊车机娱乐合作，会打包看有什么软件能在海外提供给车机</li>
+          </ul>
+        </li>
+        <li>参考：<strong>腾讯游戏出海也有专门的本地化合规审核团队</strong>，合规成本非常重</li>
+        <li>结论：场景B如果真要做，<strong>必须先看具体是什么软件场景</strong>，才能设计支付方案</li>
+      </ul></div>
+    </div>
+
+    <div class="meeting-block">
+      <div class="meeting-block-title">🔹 地区优先级与能力覆盖</div>
+      <div class="meeting-block-content"><ul>
+        <li>比亚迪地区顺序：<strong>先提欧洲5国 → 再提亚太</strong>，但本质是看我们哪里强</li>
+        <li>24年出口数据：巴西、泰国、印尼、土耳其量较大；日本 3000+辆</li>
+        <li>日本市场：比亚迪已自己接了 <strong>NTT 收单</strong>，市场成熟度最高</li>
+        <li>大部分地区在我们的覆盖范围内，<strong>只是先后顺序问题</strong></li>
+        <li>能力建设路径：<strong>先香港 → 新加坡 → 欧洲</strong>，欧洲可能明年上半年还不够</li>
+        <li>可以卖期货——但欧洲能力匹配确实需要时间</li>
+      </ul></div>
+    </div>
+
+    <div class="meeting-block">
+      <div class="meeting-block-title">🔹 闪充支付闭环模式</div>
+      <div class="meeting-block-content"><ul>
+        <li>比亚迪倾向<strong>全部闭环到 APP</strong>——强制用户下载 APP，沉淀用户资产</li>
+        <li>闪充可能做<strong>预授权模式</strong>（类似日本加油站：先刷预授权→加油→自动扣款）</li>
+        <li>第三方充电桩仍有线下支付（碰卡/PoS），<strong>三方自己解决支付问题</strong></li>
+        <li>需跟比亚迪确认：闪充业务形态到底长什么样，才能设计支付方案</li>
+      </ul></div>
+    </div>
+
+    <div class="meeting-block">
+      <div class="meeting-block-title">🔹 腾讯云团队背景补充</div>
+      <div class="meeting-block-content"><ul>
+        <li>姚琴所在<strong>"智慧出行出海项目组"</strong>就是 all-in 比亚迪的 case，从各 team 拉人</li>
+        <li>张磊（rain）是姚琴的老板，"非常牛的销售"</li>
+        <li>腾讯云已拿下比亚迪战略合作，想更紧密绑定</li>
+        <li>比亚迪已把<strong>车载地图全面换成腾讯原生地图</strong>（之前是高德打包的）</li>
+        <li>云服务包括：智驾云、座舱、AI、地图、APP 上云</li>
+      </ul></div>
+    </div>
+
+    <div class="meeting-block">
+      <div class="meeting-block-title">🔹 后续节奏</div>
+      <div class="meeting-block-content"><ul>
+        <li>等 <strong>paulotang 出差回来后</strong>再推进，安排周四碰面</li>
+        <li>下次沟通需要<strong>把我们的优势说清楚</strong>，不能太实诚</li>
+        <li>参考其他竞对策略：先搞下来再做，Sale 为主</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 7. 时间线 ===== -->
+<section class="section collapsible open" id="sec-timeline">
+  <div class="section-header" onclick="toggleSection('sec-timeline')">
+    <div class="section-icon" style="background:#fff1f2;color:#e11d48;">📅</div>
+    <h2 class="section-title">七、时间线</h2>
+    <button class="toggle-btn"><span class="toggle-chevron">▼</span>收起</button>
+  </div>
   <div class="collapsed-summary">
-    05-28 启动 → 05-29 需求收集(3+1场景) → 06-01 内部复盘 → 匹配覆盖+出方案 → 6月 高层会面
+    05-28 收到需求 → 05-28 建联 → 05-28 内部讨论 → 05-29 需求收集完成 → 06-01 内部复盘 → 启动双方对接·匹配覆盖·出方案 → 6月 李科总×Dowson
   </div>
   <div class="collapsible-body">
     <div class="timeline">
       <div class="tl-item">
         <div class="tl-dot" style="background:#ecfdf5;color:#059669;border:2px solid #86efac;">✓</div>
         <div class="tl-body">
-          <div class="tl-time">2026-05-28</div>
-          <div class="tl-event">项目启动 · 建联 + 内部讨论</div>
-          <div class="tl-detail">大概率本对本收单 · 收款可能切不进去 · 先聊需求不带方案</div>
+          <div class="tl-time">2026-05-28 上午</div>
+          <div class="tl-event">收到需求 · 项目启动</div>
+          <div class="tl-detail">腾讯云 ringyao 转达比亚迪海外闪充支付需求</div>
         </div>
       </div>
       <div class="tl-item">
         <div class="tl-dot" style="background:#ecfdf5;color:#059669;border:2px solid #86efac;">✓</div>
         <div class="tl-body">
-          <div class="tl-time">2026-05-29</div>
-          <div class="tl-event">比亚迪需求收集（线下坪山）</div>
-          <div class="tl-detail">确认3+1场景 · 现有 PingPong+JP Morgan · 建议香港先做标杆 · 下次带方案去</div>
+          <div class="tl-time">2026-05-28 11:30-12:00</div>
+          <div class="tl-event">建联会议 · 与腾讯云沟通</div>
+          <div class="tl-detail">确认合作背景、比亚迪需求、明天会议安排</div>
         </div>
       </div>
       <div class="tl-item">
         <div class="tl-dot" style="background:#ecfdf5;color:#059669;border:2px solid #86efac;">✓</div>
         <div class="tl-body">
-          <div class="tl-time">2026-06-01</div>
-          <div class="tl-event">内部出差复盘</div>
-          <div class="tl-detail">客户在选我们 · 场景B合规风险重 · 比亚迪想资源置换 · 先香港启动</div>
+          <div class="tl-time">2026-05-28 16:28-16:41</div>
+          <div class="tl-event">内部讨论 · 确认业务本质与策略</div>
+          <div class="tl-detail">大概率本对本收单 · 线上为主 · 收款可能切不进去 · 明日聊需求不带方案</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:#ecfdf5;color:#059669;border:2px solid #86efac;">✓</div>
+        <div class="tl-body">
+          <div class="tl-time">2026-05-29 14:05-15:28</div>
+          <div class="tl-event">比亚迪需求收集会议（线下坪山）</div>
+          <div class="tl-detail">确认3+1场景 · 现有服务商PingPong+JP Morgan · 建议香港先做标杆 · 待对方给优先国家清单 · 下次带方案去</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:#ecfdf5;color:#059669;border:2px solid #86efac;">✓</div>
+        <div class="tl-body">
+          <div class="tl-time">2026-06-01 11:18-12:17</div>
+          <div class="tl-event">内部讨论 · 出差后复盘</div>
+          <div class="tl-detail">客户在选我们 · 场景B合规风险重 · 比亚迪想资源置换 · 能力先从香港启动 · 等paulotang回来推进</div>
         </div>
       </div>
       <div class="tl-item">
         <div class="tl-dot" style="background:#fff7ed;color:#d97706;border:2px solid #fde68a;">◷</div>
         <div class="tl-body">
-          <div class="tl-time">待定（等 paulotang 回来）</div>
-          <div class="tl-event">匹配覆盖能力 · 输出方案</div>
-          <div class="tl-detail">基于国家清单优先级匹配 → 哪些马上能做、哪些需开区 → 输出方案</div>
+          <div class="tl-time">待定</div>
+          <div class="tl-event">启动双方对接 · 匹配覆盖能力 · 输出方案</div>
+          <div class="tl-detail">启动双方对接 → 基于国家清单优先级匹配我方覆盖能力 → 输出方案</div>
         </div>
       </div>
       <div class="tl-item">
